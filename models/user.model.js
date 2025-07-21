@@ -1,4 +1,5 @@
-import { verify } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
+const { verify } = jwt;
 import mongoose from 'mongoose';
 
  const userSchema = new mongoose.Schema({
@@ -71,7 +72,7 @@ import mongoose from 'mongoose';
     role :{
         type: String,
         enum :['ADMIN',"USER"],
-        default : "user"
+        default : "USER"
     }
 
  },
@@ -79,4 +80,6 @@ import mongoose from 'mongoose';
      timestamps : true
 })
 
-const UserModel =mongoose.model("User")
+const UserModel =mongoose.model("User",userSchema)
+
+export default UserModel

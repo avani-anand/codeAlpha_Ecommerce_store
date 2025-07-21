@@ -6,6 +6,7 @@ dotenv.config()
 import morgan from 'morgan';
 import helmet from 'helmet';
 import connectDB from './config/connectDB.js';
+import userRouter from './route/user.route.js';
 
 const app=express()
 app.use(cors({
@@ -27,6 +28,9 @@ app.get("/",(request ,response)=>{
         message: "sever is running " +PORT
     })
 })
+
+
+app.use('/api/user',userRouter)
 
 connectDB().then(()=>{
     
