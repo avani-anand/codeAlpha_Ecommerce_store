@@ -1,8 +1,8 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import express, { response } from 'express';
 import cors from 'cors'
-import dotenv from 'dotenv'
 import cookieParser from "cookie-parser";
-dotenv.config()
 import morgan from 'morgan';
 import helmet from 'helmet';
 import connectDB from './config/connectDB.js';
@@ -15,7 +15,8 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(cookieParser())
-app.use(morgan())
+app.use(morgan("dev")); 
+// app.use(morgan())
 app.use(helmet({
     crossOriginEmbedderPolicy :false
 }))
