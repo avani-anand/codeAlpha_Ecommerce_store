@@ -6,8 +6,8 @@ import verifyEmailTemplate from '../utils/verifyEmailTemplate.js'
 import generatedAccessToken from '../utils/generatedAccessToken.js'
 import genertedRefreshToken from '../utils/generatedRefreshToken.js'
 import uploadImageClodinary from '../utils/uploadImageClodinary.js'
-// import generatedOtp from '../utils/generatedOtp.js'
-// import forgotPasswordTemplate from '../utils/forgotPasswordTemplate.js'
+import generatedOtp from '../utils/generatedOtp.js'
+import forgotPasswordTemplate from '../utils/forgotPasswordTemplate.js'
 import jwt from 'jsonwebtoken'
 
 export async function registerUserController(request,response){
@@ -443,7 +443,7 @@ export async function resetpassword(request,response){
 }
 
 
-//refresh token controler
+//refresh token controller
 export async function refreshToken(request,response){
     try {
         const refreshToken = request.cookies.refreshToken || request?.headers?.authorization?.split(" ")[1]  /// [ Bearer token]
@@ -466,6 +466,7 @@ export async function refreshToken(request,response){
             })
         }
 
+        
         const userId = verifyToken?._id
 
         const newAccessToken = await generatedAccessToken(userId)
